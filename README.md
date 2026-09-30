@@ -8,10 +8,11 @@ Two short simulation videos: a robot controlled over a wireless link with two ra
 
 [Play in the browser](https://sonny0714.github.io/demo_video_robot/xferqoe-vs-steer.html) · [video file](videos/xferqoe_vs_steer_ssim.mp4)
 
-The edge server runs the robot policy and the rate controller, and only observations cross the wireless link. Both sides replay the same bandwidth trace in S-Sim, a packet-level network simulator, and run the same first 10 PokeCube tasks (ManiSkill3) with the same frozen robot policy; only the rate controller differs. 5× speed, 34 s.
+The edge server runs the robot policy and the rate controller, and only observations cross the wireless link. Both sides replay the same bandwidth trace in S-Sim, a packet-level network simulator, and run the same first 10 PokeCube tasks (ManiSkill3) with the same frozen robot policy; only the rate controller differs. 5× speed, 39 s. This is one example run out of 15, not the median one; over all 15 runs and all 40 tasks, XferQoE's task QoE is higher in 14.
 
-- Left, STEER (a learning-based rate controller): mean frame quality 32.4%, a complete observation on 44.8% of the control ticks, 10 tasks finished in 146.5 s (10 succeeded).
-- Right, XferQoE: mean frame quality 21.5%, a complete observation on 94.8% of the control ticks, 10 tasks finished in 108.4 s (7 succeeded, 3 failed).
+- Left, STEER (a learning-based rate controller): mean frame quality 50.6%, a complete observation on 51.6% of the control ticks, 10 tasks finished in 171.7 s (8 succeeded, 2 failed).
+- Right, XferQoE: mean frame quality 27.2%, a complete observation on 86.8% of the control ticks, 10 tasks finished in 95.6 s (9 succeeded, 1 failed).
+- The end card gives the task QoE over the 10 tasks: 0.468 (STEER) vs. 0.767 (XferQoE).
 
 ## 2. Moving-ball task under network delay: 0 ms vs. 0–1000 ms
 
