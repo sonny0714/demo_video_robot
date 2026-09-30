@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Demo videos</title>
+<style>
+:root { color-scheme: light dark; --bg: #ffffff; --fg: #1f2328; --muted: #59636e; --link: #0969da; }
+@media (prefers-color-scheme: dark) { :root { --bg: #0d1117; --fg: #e6edf3; --muted: #9198a1; --link: #4493f8; } }
+body { margin: 0; background: var(--bg); color: var(--fg); font: 16px/1.6 system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif; }
+main { max-width: 1200px; margin: 0 auto; padding: 24px 16px 48px; }
+h1 { font-size: 1.8rem; line-height: 1.3; margin: 0 0 12px; }
+h2 { font-size: 1.35rem; line-height: 1.3; margin: 40px 0 16px; }
+video { display: block; width: 100%; height: auto; background: #000; }
+p, ul { max-width: 72ch; }
+a { color: var(--link); }
+</style>
+</head>
+<body>
+<main>
+<h1>Demo videos</h1>
+<p>Two short simulation videos: a robot controlled over a wireless link with two rate controllers, and a robot policy under network delay. Each title opens a page that plays the video in the browser.</p>
+
+<h2><a href="xferqoe-vs-steer.html">1. STEER vs. XferQoE on the same bandwidth trace (S-Sim)</a></h2>
+<video src="videos/xferqoe_vs_steer_ssim.mp4" poster="posters/xferqoe_vs_steer_ssim.png" autoplay muted loop playsinline controls></video>
+<p>The edge server runs the robot policy and the rate controller, and only observations cross the wireless link. Both sides replay the same bandwidth trace in S-Sim, a packet-level network simulator, and run the same first 10 PokeCube tasks (ManiSkill3) with the same frozen robot policy; only the rate controller differs. 5× speed, 34 s.</p>
+<ul>
+<li>Left, STEER (a learning-based rate controller): mean frame quality 32.4%, a complete observation on 44.8% of the control ticks, 10 tasks finished in 146.5 s (10 succeeded).</li>
+<li>Right, XferQoE: mean frame quality 21.5%, a complete observation on 94.8% of the control ticks, 10 tasks finished in 108.4 s (7 succeeded, 3 failed).</li>
+</ul>
+
+<h2><a href="moving-ball-delay.html">2. Moving-ball task under network delay: 0 ms vs. 0–1000 ms</a></h2>
+<video src="videos/moving_ball_delay_0ms_vs_0-1000ms.mp4" poster="posters/moving_ball_delay.png" autoplay muted loop playsinline controls></video>
+<p>A fine-tuned SmolVLA policy intercepts a moving ball (MIKASA-Robo InterceptSlow, simulation). Both sides see the same 10 ball launches. 0.75× speed, 52 s.</p>
+<ul>
+<li>Left: no delay.</li>
+<li>Right: every action-chunk request draws a uniform random delay of 0–1000 ms (the first chunk arrives immediately on both sides), and the robot waits for the new chunk before it moves (synchronous execution).</li>
+</ul>
+<p>In this clip the left side succeeds on 5 of the 10 launches and the right side on none. Over all 200 evaluation episodes the success rates are 55.5% and 3.0%.</p>
+</main>
+</body>
+</html>
