@@ -1,33 +1,21 @@
 # Demo videos
 
-Short demo videos: a robot controlled over a wireless link by two rate controllers, robot foundation models served over a wireless link, sixteen cameras sharing one wireless link, and a robot policy under network delay. Each picture opens a page that plays the video in the browser.
+Short demo videos: a robot policy under network delay, a robot controlled over a wireless link by two rate controllers, robot foundation models served over a wireless link, and sixteen cameras sharing one wireless link. Each picture opens a page that plays the video in the browser.
 
-## 1. STEER vs. XferQoE on the same bandwidth trace (S-Sim)
+## 1. Moving-ball task under network delay: 0–1000 ms vs. 0 ms
 
-[![STEER vs. XferQoE on the same bandwidth trace (S-Sim)](posters/xferqoe_vs_steer_ssim.png)](https://sonny0714.github.io/demo_video_robot/xferqoe-vs-steer.html)
+[![Moving-ball task under network delay: 0–1000 ms vs. 0 ms](posters/moving_ball_delay.png)](https://sonny0714.github.io/demo_video_robot/moving-ball-delay.html)
 
-[Play in the browser](https://sonny0714.github.io/demo_video_robot/xferqoe-vs-steer.html) · [video file](videos/xferqoe_vs_steer_ssim.mp4)
+[Play in the browser](https://sonny0714.github.io/demo_video_robot/moving-ball-delay.html) · [video file](videos/moving_ball_delay_0-1000ms_vs_0ms.mp4)
 
-The edge server runs the robot policy and the rate controller, and only observations cross the wireless link. Both sides replay the same bandwidth trace in S-Sim, a packet-level network simulator, and run the same first 10 PokeCube tasks (ManiSkill3) with the same frozen robot policy; only the rate controller differs. 5× speed, 39 s. This is one example run out of 15, not the median one; over all 15 runs and all 40 tasks, XferQoE's task QoE is higher in 14.
+A fine-tuned SmolVLA policy intercepts a moving ball (MIKASA-Robo InterceptSlow, simulation). Both sides see the same 5 ball launches. 0.75× speed, 28 s.
 
-- Left, STEER (a learning-based rate controller): mean frame quality 50.6%, a complete observation on 51.6% of the control ticks, 10 tasks finished in 171.7 s (8 succeeded, 2 failed).
-- Right, XferQoE: mean frame quality 27.2%, a complete observation on 86.8% of the control ticks, 10 tasks finished in 95.6 s (9 succeeded, 1 failed).
-- The end card gives the task QoE over the 10 tasks: 0.468 (STEER) vs. 0.767 (XferQoE).
+- Left: every action-chunk request draws a uniform random delay of 0–1000 ms (none before a task's first chunk), and the robot waits for the new chunk before it moves (synchronous execution).
+- Right: no delay.
 
-## 2. Moving-ball task under network delay: 0 ms vs. 0–1000 ms
+In this clip the left side succeeds on 0 of the 5 launches and the right side on 4. Over all 200 evaluation episodes the success rates are 3.0% and 55.5%.
 
-[![Moving-ball task under network delay: 0 ms vs. 0–1000 ms](posters/moving_ball_delay.png)](https://sonny0714.github.io/demo_video_robot/moving-ball-delay.html)
-
-[Play in the browser](https://sonny0714.github.io/demo_video_robot/moving-ball-delay.html) · [video file](videos/moving_ball_delay_0ms_vs_0-1000ms.mp4)
-
-A fine-tuned SmolVLA policy intercepts a moving ball (MIKASA-Robo InterceptSlow, simulation). Both sides see the same 10 ball launches. 0.75× speed, 52 s.
-
-- Left: no delay.
-- Right: every action-chunk request draws a uniform random delay of 0–1000 ms (the first chunk arrives immediately on both sides), and the robot waits for the new chunk before it moves (synchronous execution).
-
-In this clip the left side succeeds on 5 of the 10 launches and the right side on none. Over all 200 evaluation episodes the success rates are 55.5% and 3.0%.
-
-## 3. Rate control for robot manipulation: STEER+XferQoE's WF vs. XferQoE
+## 2. Rate control for robot manipulation: STEER+XferQoE's WF vs. XferQoE
 
 [![Rate control for robot manipulation: STEER+XferQoE's WF vs. XferQoE](posters/xferqoe_pokecube.png)](https://sonny0714.github.io/demo_video_robot/xferqoe-pokecube.html)
 
@@ -38,7 +26,7 @@ The edge server runs the robot policy (a frozen ManiSkill3 PokeCube policy) and 
 - STEER+XferQoE's WF: 2 tasks finished, a complete observation on 38.9% of the control ticks, mean frame quality 34.4%.
 - XferQoE: 5 tasks finished, a complete observation on 88.1% of the control ticks, mean frame quality 30.7%.
 
-## 4. Robot foundation model, time-invariant task: LIBERO-Spatial with π0.5
+## 3. Robot foundation model, time-invariant task: LIBERO-Spatial with π0.5
 
 [![Robot foundation model, time-invariant task: LIBERO-Spatial with π0.5](posters/xferqoe_rfm_libero_spatial.png)](https://sonny0714.github.io/demo_video_robot/xferqoe-rfm-libero.html)
 
@@ -49,7 +37,7 @@ The robot policy is a robot foundation model (π0.5, public checkpoint fine-tune
 - By 36.9 s, when XferQoE has completed all five tasks, STEER+XferQoE's WF has finished two, with no success.
 - Fresh action chunks (frame at most one 50 ms step old): 42.2% for STEER+XferQoE's WF, 84.4% for XferQoE; mean frame quality 27.9% and 20.1%.
 
-## 5. Robot foundation model, time-varying task: MIKASA Intercept with SmolVLA
+## 4. Robot foundation model, time-varying task: MIKASA Intercept with SmolVLA
 
 [![Robot foundation model, time-varying task: MIKASA Intercept with SmolVLA](posters/xferqoe_rfm_mikasa_intercept.png)](https://sonny0714.github.io/demo_video_robot/xferqoe-rfm-mikasa.html)
 
@@ -60,7 +48,7 @@ The robot policy is SmolVLA, fine-tuned on 250 MIKASA-Robo-VLA Intercept demonst
 - XferQoE succeeds in three of the five tasks, STEER+XferQoE's WF in one.
 - Fresh action chunks: 85.3% for STEER+XferQoE's WF, 100% for XferQoE; mean frame quality 23.7% and 20.0%.
 
-## 6. Networked monitoring: sixteen cameras on one wireless link
+## 5. Networked monitoring: sixteen cameras on one wireless link
 
 [![Networked monitoring: sixteen cameras on one wireless link](posters/xferqoe_monitoring.png)](https://sonny0714.github.io/demo_video_robot/xferqoe-monitoring.html)
 

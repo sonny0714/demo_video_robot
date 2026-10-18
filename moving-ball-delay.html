@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Moving-ball task under network delay: 0 ms vs. 0–1000 ms</title>
+<title>Moving-ball task under network delay: 0–1000 ms vs. 0 ms</title>
 <style>
 :root { color-scheme: light dark; --bg: #ffffff; --fg: #1f2328; --muted: #59636e; --link: #0969da; }
 @media (prefers-color-scheme: dark) { :root { --bg: #0d1117; --fg: #e6edf3; --muted: #9198a1; --link: #4493f8; } }
@@ -18,14 +18,14 @@ nav { margin-top: 32px; color: var(--muted); }
 </head>
 <body>
 <main>
-<h1>Moving-ball task under network delay: 0 ms vs. 0–1000 ms</h1>
-<video src="videos/moving_ball_delay_0ms_vs_0-1000ms.mp4" poster="posters/moving_ball_delay.png" autoplay muted loop playsinline controls></video>
-<p>A fine-tuned SmolVLA policy intercepts a moving ball (MIKASA-Robo InterceptSlow, simulation). Both sides see the same 10 ball launches. 0.75× speed, 52 s.</p>
+<h1>Moving-ball task under network delay: 0–1000 ms vs. 0 ms</h1>
+<video src="videos/moving_ball_delay_0-1000ms_vs_0ms.mp4" poster="posters/moving_ball_delay.png" autoplay muted loop playsinline controls></video>
+<p>A fine-tuned SmolVLA policy intercepts a moving ball (MIKASA-Robo InterceptSlow, simulation). Both sides see the same 5 ball launches. 0.75× speed, 28 s.</p>
 <ul>
-<li>Left: no delay.</li>
-<li>Right: every action-chunk request draws a uniform random delay of 0–1000 ms (the first chunk arrives immediately on both sides), and the robot waits for the new chunk before it moves (synchronous execution).</li>
+<li>Left: every action-chunk request draws a uniform random delay of 0–1000 ms (none before a task's first chunk), and the robot waits for the new chunk before it moves (synchronous execution).</li>
+<li>Right: no delay.</li>
 </ul>
-<p>In this clip the left side succeeds on 5 of the 10 launches and the right side on none. Over all 200 evaluation episodes the success rates are 55.5% and 3.0%.</p>
+<p>In this clip the left side succeeds on 0 of the 5 launches and the right side on 4. Over all 200 evaluation episodes the success rates are 3.0% and 55.5%.</p>
 <nav><a href="index.html">All videos</a> · <a href="https://github.com/sonny0714/demo_video_robot">Repository</a></nav>
 </main>
 </body>
