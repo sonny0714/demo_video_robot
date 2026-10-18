@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Networked monitoring: sixteen cameras on one wireless link</title>
+<style>
+:root { color-scheme: light dark; --bg: #ffffff; --fg: #1f2328; --muted: #59636e; --link: #0969da; }
+@media (prefers-color-scheme: dark) { :root { --bg: #0d1117; --fg: #e6edf3; --muted: #9198a1; --link: #4493f8; } }
+body { margin: 0; background: var(--bg); color: var(--fg); font: 16px/1.6 system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif; }
+main { max-width: 1200px; margin: 0 auto; padding: 24px 16px 48px; }
+h1 { font-size: 1.6rem; line-height: 1.3; margin: 0 0 16px; }
+video { display: block; width: 100%; height: auto; background: #000; }
+p, ul { max-width: 72ch; }
+a { color: var(--link); }
+nav { margin-top: 32px; color: var(--muted); }
+</style>
+</head>
+<body>
+<main>
+<h1>Networked monitoring: sixteen cameras on one wireless link</h1>
+<video src="videos/xferqoe_monitoring.mp4" poster="posters/xferqoe_monitoring.png" autoplay muted loop playsinline controls></video>
+<p>Sixteen cameras share one wireless link to a server whose recognition model detects objects in their frames, and every interval is scored by detection F1 against the current ground truth. The video shows the ground truth, STEER+XferQoE's WF, and XferQoE on the same bandwidth trace from 145 to 185 s at 1× speed; the per-camera link opens at 167 s.</p>
+<ul>
+<li>At 148.5 s each camera's link is 3.3 Mbps: STEER+XferQoE's WF sends 6.7 Mbps, so camera 7 holds a frame three frames old and finds none of its five objects, while XferQoE sends 2.1 Mbps and finds four.</li>
+<li>Over the slow span (145–166 s) XferQoE's F1 is 0.286 against 0.235; after the link opens at 167 s, STEER+XferQoE's WF scores 0.769 against 0.721.</li>
+</ul>
+<nav><a href="index.html">All videos</a> · <a href="https://github.com/sonny0714/demo_video_robot">Repository</a></nav>
+</main>
+</body>
+</html>
