@@ -26,29 +26,22 @@ The edge server runs the robot policy (a frozen ManiSkill3 PokeCube policy) and 
 - STEER+XferQoE's WF: 2 tasks finished, a complete observation on 38.9% of the control ticks, mean frame quality 34.4%.
 - XferQoE: 5 tasks finished, a complete observation on 88.1% of the control ticks, mean frame quality 30.7%.
 
-## 3. Robot foundation model, time-invariant task: LIBERO-Spatial with π0.5
+## 3. Remote RFM serving: the control loop and two robot foundation model tasks
 
-[![Robot foundation model, time-invariant task: LIBERO-Spatial with π0.5](posters/xferqoe_rfm_libero_spatial.png)](https://sonny0714.github.io/demo_video_robot/xferqoe-rfm-libero.html)
+[![Remote RFM serving: the control loop and two robot foundation model tasks](posters/xferqoe_rfm_serving.png)](https://sonny0714.github.io/demo_video_robot/xferqoe-rfm-serving.html)
 
-[Play in the browser](https://sonny0714.github.io/demo_video_robot/xferqoe-rfm-libero.html) · [video file](videos/xferqoe_rfm_libero_spatial.mp4)
+[Play in the browser](https://sonny0714.github.io/demo_video_robot/xferqoe-rfm-serving.html) · [video file](videos/xferqoe_rfm_serving.mp4)
 
-The robot policy is a robot foundation model (π0.5, public checkpoint fine-tuned on the four LIBERO suites) on the edge server; it computes each action chunk from the newest camera frame that arrives within its deadline, and the rate controller decides how the camera frames cross the wireless link. Both runs play the first five tasks on the same bandwidth trace with the same model and scene, one after the other, so only the rate controller differs. 1.5× speed, 60 s.
+The robot policy is a robot foundation model (RFM) on the edge server, π0.5 in a time-invariant task (LIBERO-Spatial) and SmolVLA in a time-varying one (MIKASA Intercept); it acts on the newest camera frame that arrives within its deadline, and the rate controller decides how the frames cross the wireless link. The video first animates this control loop on the system diagram, then plays the first five tasks of each on one bandwidth trace, STEER+XferQoE's WF first and XferQoE second, with the same model and scene, so only the rate controller differs. 1.5× and 0.7× speed, 2 min 42 s.
 
-- By 36.9 s, when XferQoE has completed all five tasks, STEER+XferQoE's WF has finished two, with no success.
-- Fresh action chunks (frame at most one 50 ms step old): 42.2% for STEER+XferQoE's WF, 84.4% for XferQoE; mean frame quality 27.9% and 20.1%.
+- LIBERO-Spatial with π0.5
+	- By 36.9 s, when XferQoE has completed all five tasks, STEER+XferQoE's WF has finished two, with no success.
+	- Fresh action chunks (frame at most one 50 ms step old): 42.2% for STEER+XferQoE's WF, 84.4% for XferQoE; mean frame quality 27.9% and 20.1%.
+- MIKASA Intercept with SmolVLA
+	- XferQoE succeeds in four of the five tasks, STEER+XferQoE's WF in none.
+	- Views within 0.1 s (frame at most two 50 ms steps old): 37.1% for STEER+XferQoE's WF, 88.9% for XferQoE; fresh action chunks (at most one step old) 25.7% and 33.3%; mean frame quality 21.6% and 20.9%.
 
-## 4. Robot foundation model, time-varying task: MIKASA Intercept with SmolVLA
-
-[![Robot foundation model, time-varying task: MIKASA Intercept with SmolVLA](posters/xferqoe_rfm_mikasa_intercept.png)](https://sonny0714.github.io/demo_video_robot/xferqoe-rfm-mikasa.html)
-
-[Play in the browser](https://sonny0714.github.io/demo_video_robot/xferqoe-rfm-mikasa.html) · [video file](videos/xferqoe_rfm_mikasa_intercept.mp4)
-
-The robot policy is SmolVLA, fine-tuned on 250 MIKASA-Robo-VLA Intercept demonstrations, on the edge server; it deflects a rolling ball to the target from the newest camera frame that arrives within its deadline, and the rate controller decides how the camera frames cross the wireless link. Both runs play their first five tasks on the same bandwidth trace with the same model and scene, one after the other, so only the rate controller differs. 0.7× speed, 52 s.
-
-- XferQoE succeeds in four of the five tasks, STEER+XferQoE's WF in none.
-- Views within 0.1 s (frame at most two 50 ms steps old): 37.1% for STEER+XferQoE's WF, 88.9% for XferQoE; fresh action chunks (at most one step old) 25.7% and 33.3%; mean frame quality 21.6% and 20.9%.
-
-## 5. Networked monitoring: sixteen cameras on one wireless link
+## 4. Networked monitoring: sixteen cameras on one wireless link
 
 [![Networked monitoring: sixteen cameras on one wireless link](posters/xferqoe_monitoring.png)](https://sonny0714.github.io/demo_video_robot/xferqoe-monitoring.html)
 
