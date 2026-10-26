@@ -43,7 +43,7 @@ The robot policy is a robot foundation model (π0.5, public checkpoint fine-tune
 
 [Play in the browser](https://sonny0714.github.io/demo_video_robot/xferqoe-rfm-mikasa.html) · [video file](videos/xferqoe_rfm_mikasa_intercept.mp4)
 
-The robot policy is SmolVLA, fine-tuned on 250 MIKASA-Robo-VLA Intercept demonstrations, on the edge server; it deflects a rolling ball to the target from the newest camera frame that arrives within its deadline, and the rate controller decides how the camera frames cross the wireless link. Both runs play their first five tasks on the same bandwidth trace with the same model and scene, one after the other, so only the rate controller differs. 1× speed, 44 s.
+The robot policy is SmolVLA, fine-tuned on 250 MIKASA-Robo-VLA Intercept demonstrations, on the edge server; it deflects a rolling ball to the target from the newest camera frame that arrives within its deadline, and the rate controller decides how the camera frames cross the wireless link. Both runs play their first five tasks on the same bandwidth trace with the same model and scene, one after the other, so only the rate controller differs. 0.7× speed, 55 s.
 
 - XferQoE succeeds in four of the five tasks, STEER+XferQoE's WF in none.
 - Views within 0.1 s (frame at most two 50 ms steps old): 37.1% for STEER+XferQoE's WF, 88.9% for XferQoE; fresh action chunks (at most one step old) 25.7% and 33.3%; mean frame quality 21.6% and 20.9%.
