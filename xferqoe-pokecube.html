@@ -22,8 +22,8 @@ nav { margin-top: 32px; color: var(--muted); }
 <video src="videos/xferqoe_pokecube.mp4" poster="posters/xferqoe_pokecube.png" autoplay muted loop playsinline controls></video>
 <p>The edge server runs the robot policy (a frozen ManiSkill3 PokeCube policy) and the rate controller, and only the robot's observations cross the wireless link. Both runs replay the same bandwidth trace with the same policy and tasks, so only the rate controller differs. STEER+XferQoE's WF (STEER with XferQoE's objective-weight fit) plays first, then XferQoE over the same 41.7 s span. 5× speed, 28 s.</p>
 <ul>
-<li>STEER+XferQoE's WF: 2 tasks finished, a complete observation on 38.9% of the control ticks, mean frame quality 34.4%.</li>
-<li>XferQoE: 5 tasks finished, a complete observation on 88.1% of the control ticks, mean frame quality 30.7%.</li>
+<li>As the link drops, STEER+XferQoE's WF keeps a bitrate the link cannot carry, so ticks arrive without a frame and the arm stands still.</li>
+<li>Because XferQoE lowers its bitrate first, its frames keep arriving and the pokes go on.</li>
 </ul>
 <nav><a href="index.html">All videos</a> · <a href="https://github.com/sonny0714/demo_video_robot">Repository</a></nav>
 </main>

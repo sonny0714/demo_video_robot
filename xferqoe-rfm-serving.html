@@ -22,18 +22,8 @@ nav { margin-top: 32px; color: var(--muted); }
 <video src="videos/xferqoe_rfm_serving.mp4" poster="posters/xferqoe_rfm_serving.png" autoplay muted loop playsinline controls></video>
 <p>The robot policy is a robot foundation model (RFM) on the edge server: π0.5 in a time-invariant task (LIBERO-Spatial) and SmolVLA in a time-varying one (MIKASA Intercept). It acts on the newest camera frame that arrives within its deadline, and the rate controller decides how the frames cross the wireless link. The video first animates this control loop on the system diagram. It then plays the first five tasks of each on one bandwidth trace with the same model and scene, STEER+XferQoE's WF first and XferQoE second. Only the rate controller differs between the two runs. 1.5× and 0.7× speed, 2 min 42 s.</p>
 <ul>
-<li>LIBERO-Spatial with π0.5
-<ul>
-<li>By 36.9 s, when XferQoE has completed all five tasks, STEER+XferQoE's WF has finished two, with no success.</li>
-<li>Fresh action chunks (frame at most one 50 ms step old): 42.2% for STEER+XferQoE's WF, 84.4% for XferQoE; mean frame quality 27.9% and 20.1%.</li>
-</ul>
-</li>
-<li>MIKASA Intercept with SmolVLA
-<ul>
-<li>XferQoE succeeds in four of the five tasks, STEER+XferQoE's WF in none.</li>
-<li>Views within 0.1 s (frame at most two 50 ms steps old): 37.1% for STEER+XferQoE's WF, 88.9% for XferQoE; fresh action chunks (at most one step old) 25.7% and 33.3%; mean frame quality 21.6% and 20.9%.</li>
-</ul>
-</li>
+<li>STEER+XferQoE's WF sends more than the link carries, so the RFM acts on a past scene and misses the bowl and the ball.</li>
+<li>Because XferQoE's frames arrive in time, the RFM completes the task.</li>
 </ul>
 <nav><a href="index.html">All videos</a> · <a href="https://github.com/sonny0714/demo_video_robot">Repository</a></nav>
 </main>

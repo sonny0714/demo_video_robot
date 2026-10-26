@@ -22,8 +22,8 @@ nav { margin-top: 32px; color: var(--muted); }
 <video src="videos/xferqoe_monitoring.mp4" poster="posters/xferqoe_monitoring.png" autoplay muted loop playsinline controls></video>
 <p>Sixteen cameras share one wireless link to a server whose recognition model detects objects in their frames, and every interval is scored by detection F1 against the current ground truth. The video shows the ground truth, STEER+XferQoE's WF, and XferQoE on the same bandwidth trace from 145 to 185 s at 1× speed; the per-camera link opens at 167 s.</p>
 <ul>
-<li>At 148.5 s each camera's link is 3.3 Mbps: STEER+XferQoE's WF sends 6.7 Mbps, so camera 7 holds a frame three frames old and finds none of its five objects, while XferQoE sends 2.1 Mbps and finds four.</li>
-<li>Over the slow span (145–166 s) XferQoE's F1 is 0.286 against 0.235; after the link opens at 167 s, STEER+XferQoE's WF scores 0.769 against 0.721.</li>
+<li>On the slow link STEER+XferQoE's WF sends above what the link carries, so its tiles turn yellow and red and the detector misses pedestrians.</li>
+<li>XferQoE's lower bitrate keeps frames current and detections up.</li>
 </ul>
 <nav><a href="index.html">All videos</a> · <a href="https://github.com/sonny0714/demo_video_robot">Repository</a></nav>
 </main>
