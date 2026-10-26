@@ -20,7 +20,7 @@ nav { margin-top: 32px; color: var(--muted); }
 <main>
 <h1>Robot foundation model, time-invariant task: LIBERO-Spatial with π0.5</h1>
 <video src="videos/xferqoe_rfm_libero_spatial.mp4" poster="posters/xferqoe_rfm_libero_spatial.png" autoplay muted loop playsinline controls></video>
-<p>The robot policy is a robot foundation model (π0.5, public checkpoint fine-tuned on the four LIBERO suites) on the edge server; it computes each action chunk from the newest camera frame that arrives within its deadline, and the rate controller decides how the camera frames cross the wireless link. Both runs play the first five tasks on the same bandwidth trace with the same model and scene, one after the other, so only the rate controller differs. 1.5× speed, 63 s.</p>
+<p>The robot policy is a robot foundation model (π0.5, public checkpoint fine-tuned on the four LIBERO suites) on the edge server; it computes each action chunk from the newest camera frame that arrives within its deadline, and the rate controller decides how the camera frames cross the wireless link. Both runs play the first five tasks on the same bandwidth trace with the same model and scene, one after the other, so only the rate controller differs. 1.5× speed, 60 s.</p>
 <ul>
 <li>By 36.9 s, when XferQoE has completed all five tasks, STEER+XferQoE's WF has finished two, with no success.</li>
 <li>Fresh action chunks (frame at most one 50 ms step old): 42.2% for STEER+XferQoE's WF, 84.4% for XferQoE; mean frame quality 27.9% and 20.1%.</li>
