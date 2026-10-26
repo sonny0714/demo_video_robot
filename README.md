@@ -32,7 +32,7 @@ The edge server runs the robot policy (a frozen ManiSkill3 PokeCube policy) and 
 
 [Play in the browser](https://sonny0714.github.io/demo_video_robot/xferqoe-rfm-serving.html) · [video file](videos/xferqoe_rfm_serving.mp4)
 
-The robot policy is a robot foundation model (RFM) on the edge server, π0.5 in a time-invariant task (LIBERO-Spatial) and SmolVLA in a time-varying one (MIKASA Intercept); it acts on the newest camera frame that arrives within its deadline, and the rate controller decides how the frames cross the wireless link. The video first animates this control loop on the system diagram, then plays the first five tasks of each on one bandwidth trace, STEER+XferQoE's WF first and XferQoE second, with the same model and scene, so only the rate controller differs. 1.5× and 0.7× speed, 2 min 42 s.
+The robot policy is a robot foundation model (RFM) on the edge server: π0.5 in a time-invariant task (LIBERO-Spatial) and SmolVLA in a time-varying one (MIKASA Intercept). It acts on the newest camera frame that arrives within its deadline, and the rate controller decides how the frames cross the wireless link. The video first animates this control loop on the system diagram. It then plays the first five tasks of each on one bandwidth trace with the same model and scene, STEER+XferQoE's WF first and XferQoE second. Only the rate controller differs between the two runs. 1.5× and 0.7× speed, 2 min 42 s.
 
 - LIBERO-Spatial with π0.5
 	- By 36.9 s, when XferQoE has completed all five tasks, STEER+XferQoE's WF has finished two, with no success.
