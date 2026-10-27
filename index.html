@@ -19,7 +19,7 @@ a { color: var(--link); }
 <body>
 <main>
 <h1>Demo videos</h1>
-<p>Short demo videos: a robot policy under network delay, a robot controlled over a wireless link by two rate controllers, robot foundation models served over a wireless link, and sixteen cameras sharing one wireless link. Each title opens a page that plays the video in the browser.</p>
+<p>Short demo videos: a robot policy under network delay, a robot controlled over a wireless link by two rate controllers, robot foundation models served over a wireless link, and sixteen cameras, each on its own wireless link. Each title opens a page that plays the video in the browser.</p>
 
 <h2><a href="moving-ball-delay.html">1. Moving-ball task under network delay: 0–1000 ms vs. 0 ms</a></h2>
 <video src="videos/moving_ball_delay_0-1000ms_vs_0ms.mp4" poster="posters/moving_ball_delay.png" autoplay muted loop playsinline controls></video>
@@ -46,9 +46,9 @@ a { color: var(--link); }
 <li>Because XferQoE's frames arrive in time, the RFM completes the task.</li>
 </ul>
 
-<h2><a href="xferqoe-monitoring.html">4. Networked monitoring: sixteen cameras on one wireless link</a></h2>
+<h2><a href="xferqoe-monitoring.html">4. Remote monitoring: the control loop and sixteen cameras on their own links</a></h2>
 <video src="videos/xferqoe_monitoring.mp4" poster="posters/xferqoe_monitoring.png" autoplay muted loop playsinline controls></video>
-<p>Sixteen cameras share one wireless link to a server whose recognition model detects objects in their frames, and every interval is scored by detection F1 against the current ground truth. The video shows the ground truth, STEER+XferQoE's WF, and XferQoE on the same bandwidth trace from 145 to 185 s at 1× speed; the per-camera link opens at 167 s.</p>
+<p>Sixteen cameras each send frames over their own wireless link to a server whose recognition model detects objects in them, and every interval is scored by detection F1 against the current ground truth. The video first animates this control loop on the system diagram. It then shows the ground truth, STEER+XferQoE's WF, and XferQoE on the same bandwidth trace from 145 to 185 s at 1× speed. The per-camera link opens at 167 s.</p>
 <ul>
 <li>On the slow link STEER+XferQoE's WF sends above what the link carries, so its tiles turn yellow and red and the detector misses pedestrians.</li>
 <li>XferQoE's lower bitrate keeps frames current and detections up.</li>

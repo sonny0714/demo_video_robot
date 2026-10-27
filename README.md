@@ -1,6 +1,6 @@
 # Demo videos
 
-Short demo videos: a robot policy under network delay, a robot controlled over a wireless link by two rate controllers, robot foundation models served over a wireless link, and sixteen cameras sharing one wireless link. Each picture opens a page that plays the video in the browser.
+Short demo videos: a robot policy under network delay, a robot controlled over a wireless link by two rate controllers, robot foundation models served over a wireless link, and sixteen cameras, each on its own wireless link. Each picture opens a page that plays the video in the browser.
 
 ## 1. Moving-ball task under network delay: 0–1000 ms vs. 0 ms
 
@@ -37,13 +37,13 @@ The robot policy is a robot foundation model (RFM) on the edge server: π0.5 in 
 - STEER+XferQoE's WF sends more than the link carries, so the RFM acts on a past scene and misses the bowl and the ball.
 - Because XferQoE's frames arrive in time, the RFM completes the task.
 
-## 4. Networked monitoring: sixteen cameras on one wireless link
+## 4. Remote monitoring: the control loop and sixteen cameras on their own links
 
-[![Networked monitoring: sixteen cameras on one wireless link](posters/xferqoe_monitoring.png)](https://sonny0714.github.io/demo_video_robot/xferqoe-monitoring.html)
+[![Remote monitoring: the control loop and sixteen cameras on their own links](posters/xferqoe_monitoring.png)](https://sonny0714.github.io/demo_video_robot/xferqoe-monitoring.html)
 
 [Play in the browser](https://sonny0714.github.io/demo_video_robot/xferqoe-monitoring.html) · [video file](videos/xferqoe_monitoring.mp4)
 
-Sixteen cameras share one wireless link to a server whose recognition model detects objects in their frames, and every interval is scored by detection F1 against the current ground truth. The video shows the ground truth, STEER+XferQoE's WF, and XferQoE on the same bandwidth trace from 145 to 185 s at 1× speed; the per-camera link opens at 167 s.
+Sixteen cameras each send frames over their own wireless link to a server whose recognition model detects objects in them, and every interval is scored by detection F1 against the current ground truth. The video first animates this control loop on the system diagram. It then shows the ground truth, STEER+XferQoE's WF, and XferQoE on the same bandwidth trace from 145 to 185 s at 1× speed. The per-camera link opens at 167 s.
 
 - On the slow link STEER+XferQoE's WF sends above what the link carries, so its tiles turn yellow and red and the detector misses pedestrians.
 - XferQoE's lower bitrate keeps frames current and detections up.
